@@ -87,29 +87,29 @@ public class Quarto{
     }
     
     public void EditarQuarto(ArrayList<Quarto> quartos, int numerDoQuarto){
-        Scanner ler = new Scanner(System.in);
+        Scanner modificar = new Scanner(System.in);
 
         for(Quarto quarto : quartos){
             if(quarto.getNumero_do_quarto() == numerDoQuarto){
                 System.out.println("Informe a nova disponibilidade do quarto: ");
-                String disponibilidade = ler.next();
+                String disponibilidade = modificar.next();
                 boolean NovaDisponibilidade = disponibilidade.equalsIgnoreCase("nao");
 
                 System.out.println("Informe a nova localizacao do quarto: ");
-                String NovaLocalizacao = ler.next();
+                String NovaLocalizacao = modificar.next();
 
                 System.out.println("Informe o novo valor do quarto: ");
-                float NovoPreco = ler.nextFloat();
+                float NovoPreco = modificar.nextFloat();
 
                 quarto.setDisponibilidade(NovaDisponibilidade);
                 quarto.setLocalizacao(NovaLocalizacao);
                 quarto.setPreco(NovoPreco);
 
                 System.out.println("Informacoes do quarto atualizados com sucesso!!!");
+                modificar.close();
 
                 return;
             }
         }
-        ler.close();
     }
 }
