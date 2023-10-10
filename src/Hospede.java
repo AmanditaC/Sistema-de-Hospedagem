@@ -140,8 +140,8 @@ import java.util.Scanner;
         }
 
         public static int quantidadeDeHospedes(ArrayList<Hospede> hospedes) {
-    return hospedes.size();
-}
+            return hospedes.size();
+        }
     }
 
     

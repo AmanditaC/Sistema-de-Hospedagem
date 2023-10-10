@@ -59,11 +59,14 @@ public class Quarto{
 
         System.out.println("Informe o quarto que deseja cadastrar: ");
         Numero_do_quarto = ler.nextInt();
+        
         System.out.println("Informe a disponibilidade do quarto: ");
         String disponibilidade = ler.next();
-        Disponibilidade = disponibilidade.equalsIgnoreCase("não");
+        Disponibilidade = disponibilidade.equalsIgnoreCase("sim");
+        
         System.out.println("Qual a localização do quarto: ");
         Localizacao = ler.nextLine();
+        
         System.out.println("Informe qual o valor do quarto: ");
         preco = ler.nextFloat();
 
@@ -74,12 +77,39 @@ public class Quarto{
         ler.close();
     }
 
-    public Quarto BuscarReserva(ArrayList<Quarto> quartos, int numeroDoQuarto){
+    public String BuscarQuarto(ArrayList<Quarto> quartos, int numeroDoQuarto){
         for(Quarto quarto : quartos){
             if(quarto.getNumero_do_quarto() == numeroDoQuarto){
-                return quarto;//retorna o quarto se encontrar a reserva
+                return quarto.toString();//retorna o quarto se encontrar a reserva
             }
         }
         return null;//retorna null se a reserva não for encontrada
-    }    
+    }
+    
+    public void EditarQuarto(ArrayList<Quarto> quartos, int numerDoQuarto){
+        Scanner ler = new Scanner(System.in);
+
+        for(Quarto quarto : quartos){
+            if(quarto.getNumero_do_quarto() == numerDoQuarto){
+                System.out.println("Informe a nova disponibilidade do quarto: ");
+                String disponibilidade = ler.next();
+                boolean NovaDisponibilidade = disponibilidade.equalsIgnoreCase("nao");
+
+                System.out.println("Informe a nova localizacao do quarto: ");
+                String NovaLocalizacao = ler.next();
+
+                System.out.println("Informe o novo valor do quarto: ");
+                float NovoPreco = ler.nextFloat();
+
+                quarto.setDisponibilidade(NovaDisponibilidade);
+                quarto.setLocalizacao(NovaLocalizacao);
+                quarto.setPreco(NovoPreco);
+
+                System.out.println("Informacoes do quarto atualizados com sucesso!!!");
+
+                return;
+            }
+        }
+        ler.close();
+    }
 }
