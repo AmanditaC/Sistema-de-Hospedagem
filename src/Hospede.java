@@ -49,17 +49,6 @@ import java.util.Scanner;
             this.numeroDoHospede = numeroDoHospede;
         }
 
-    
-
-        public void inserirHospede(Hospede hospede) {
-            hospedes.add(hospede);
-        }
-
-        public Hospede excluirReservaH(int numeroInformado) {
-            hospedes.removeIf(h -> h.getNumeroDoHospede() == numeroInformado);
-            return this;
-        }
-
         public static void realizarHospedagem(ArrayList<Hospede> listaHospedes) {
             Scanner scanner = new Scanner(System.in);
     
@@ -94,6 +83,18 @@ import java.util.Scanner;
                 System.out.println("Não há reservas cadastradas.");
             }
         }
+
+        public static void excluirReservaH(int numeroInformado, ArrayList<Hospede> listaHospedes) {
+            listaHospedes.removeIf(hospede -> hospede.getNumeroDoHospede() == numeroInformado);
+        
+            // Verifica se algum elemento foi removido
+            if (!listaHospedes.isEmpty()) {
+                System.out.println("A reserva foi removida com sucesso !!!!");
+            } else {
+                System.out.println("A reserva não foi encontrada!");
+            }
+        }
+
 
         public static void buscarReservaH(int numeroInformado, ArrayList<Hospede> listaHospedes) {
             boolean encontrou = false;
@@ -138,9 +139,9 @@ import java.util.Scanner;
             }
         }
 
-        public int quantidadeDeHospedes() {
-            return hospedes.size();
-        }
+        public static int quantidadeDeHospedes(ArrayList<Hospede> hospedes) {
+    return hospedes.size();
+}
     }
 
     
