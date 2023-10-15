@@ -106,6 +106,7 @@ public class Quarto{
                 quarto.setPreco(NovoPreco);
 
                 System.out.println("Informacoes do quarto atualizados com sucesso!!!");
+                
                 modificar.close();
 
                 return;

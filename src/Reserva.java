@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 
 public class Reserva {
     private Hospede hospede;
@@ -12,6 +13,9 @@ public class Reserva {
         this.quarto = quarto;
         this.dataCheckIn = dataCheckIn;
         this.dataCheckOut = dataCheckOut;
+    }
+
+    public Reserva(Quarto quarto2, Hospede hospede2) {
     }
 
     public Hospede getHospede() {
@@ -44,6 +48,27 @@ public class Reserva {
 
     public void setDataCheckOut(LocalDate dataCheckOut) {
         this.dataCheckOut = dataCheckOut;
+    }
+
+    public void criaReserva(ArrayList<Quarto> listaQuartos, ArrayList<Hospede> listaHospedes,
+    ArrayList<Reserva> listaReservas) {
+
+        Quarto ChamarQuarto = new Quarto(false, null, 0, 0);
+        Hospede chamarHospede = new Hospede(null, 0, null, 0, null);
+        // Chame os métodos para cadastrar quarto e realizar hospedagem
+        ChamarQuarto.CadastrandoQuarto(listaQuartos);
+        chamarHospede.realizarHospedagem(listaHospedes);
+    
+        // Associe o quarto e o hóspede à reserva
+        Quarto quarto = listaQuartos.get(listaQuartos.size() - 1); // Pega o quarto cadastrado
+        Hospede hospede = listaHospedes.get(listaHospedes.size() - 1); // Pega o hóspede cadastrado
+    
+        Reserva reserva = new Reserva(quarto, hospede);
+    
+        // Adicione a reserva à lista de reservas
+        listaReservas.add(reserva);
+    
+        System.out.println("Reserva criada com sucesso!\n");
     }
     
     public int calcularDuracaoEstadia() {

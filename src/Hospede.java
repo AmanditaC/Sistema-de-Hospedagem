@@ -48,7 +48,28 @@ public class Hospede {
         this.numeroDoHospede = numeroDoHospede;
     }
 
-    public void realizarHospedagem(ArrayList<Hospede> listaHospedes, ArrayList<Quarto> listaQuartos,
+    public void realizarHospedagem(ArrayList<Hospede> listaHospedes) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Informe o nome:");
+        String nome = scanner.nextLine();
+        System.out.println("Informe a duração da estadia:");
+        int duracao = scanner.nextInt();
+        scanner.nextLine(); // Consumir a quebra de linha pendente
+        System.out.println("Informe o documento:");
+        String documento = scanner.nextLine();
+        System.out.println("Informe o número do hóspede:");
+        int numero = scanner.nextInt();
+
+        Hospede novoHospede = new Hospede(nome, duracao, documento, numero, null);
+        listaHospedes.add(novoHospede);
+
+        System.out.println("Hospedagem realizada com sucesso!\n");
+
+
+    }
+
+    /*public void realizarHospedagem(ArrayList<Hospede> listaHospedes, ArrayList<Quarto> listaQuartos,
             ArrayList<Reserva> reservas) {
             Scanner scanner = new Scanner(System.in);
 
@@ -80,7 +101,7 @@ public class Hospede {
             } else {
                 System.out.println("Quarto não encontrado. Hospedagem não realizada.\n");
             }
-    }
+    }*/
 
     public static void listarReservaH(ArrayList<Hospede> listaHospedes) {
         if (!listaHospedes.isEmpty()) {
